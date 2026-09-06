@@ -18,13 +18,14 @@ const flattenHtmlOutput = {
 };
 
 export default defineConfig(({ isSsrBuild }) => {
-  // Webflow Cloud adds its own Cloudflare worker/SSR build. During that pass,
-  // HTML files cannot be Rollup entry modules, so leave the platform-owned
-  // SSR input untouched. For the normal client build, preserve the existing
-  // multi-page SurveyJS output.
   if (isSsrBuild) {
     return {
-      root: "."
+      root: ".",
+      build: {
+        rollupOptions: {
+          input: resolve(__dirname, "src/worker.ts")
+        }
+      }
     };
   }
 
