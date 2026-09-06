@@ -442,8 +442,8 @@ if (instancesBody) {
     }
 
     if (action === "delete") {
-      const hotel = target.getAttribute("data-hotel") || "this onboarding instance";
-      const confirmed = window.confirm(`Delete ${hotel}? This cannot be undone.`);
+      const hotel = target.getAttribute("data-hotel") || "this client";
+      const confirmed = window.confirm(`Delete ${hotel} and all of its onboarding records? This cannot be undone.`);
       if (!confirmed) return;
 
       target.setAttribute("disabled", "disabled");
@@ -461,7 +461,7 @@ if (instancesBody) {
           progressMeta.textContent = "";
           progressSections.innerHTML = "";
         }
-        setTableStatus("Onboarding instance deleted.");
+        setTableStatus("Client and associated onboarding records deleted.");
         await loadInstances();
       } catch (error) {
         setTableStatus(`Delete failed: ${error.message || String(error)}`, true);

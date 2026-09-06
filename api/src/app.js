@@ -1320,14 +1320,21 @@ app.post("/api/onboarding/admin/instances/:token/sync", async (req, res) => {
 });
 
 /**
- * Admin delete onboarding instance by token
+ * Admin delete client by onboarding token.
+ * Deleting the client cascades to all of its onboarding instances.
  */
 app.delete("/api/onboarding/admin/instances/:token", async (req, res) => {
   try {
     const { rows } = await pool.query(
-      `DELETE FROM surveyjs.onboarding_instances
-       WHERE token = $1
-       RETURNING id, token, status, updated_at`,
+      `WITH target_client AS (
+         SELECT client_id
+         FROM surveyjs.onboarding_instances
+         WHERE token = $1
+       )
+       DELETE FROM surveyjs.clients AS client
+       USING target_client
+       WHERE client.id = target_client.client_id
+       RETURNING client.id, client.hotel_name, client.updated_at`,
       [req.params.token]
     );
 
