@@ -300,12 +300,17 @@
 
   <script type="module">
     const gateKey = "revrebel:onboard:index-gate";
-    const requiredAccessCode = import.meta.env.VITE_INDEX_ACCESS_CODE || "revrebel";
+    const requiredAccessCode = import.meta.env.VITE_INDEX_ACCESS_CODE;
     const loginGate = document.getElementById("loginGate");
     const surveyHome = document.getElementById("surveyHome");
     const loginForm = document.getElementById("loginForm");
     const accessCodeInput = document.getElementById("accessCode");
     const loginStatus = document.getElementById("loginStatus");
+
+    if (!requiredAccessCode) {
+      console.error("[Onboard] VITE_INDEX_ACCESS_CODE is not configured. Access gate is disabled until the Webflow environment variable is set.");
+      throw new Error("VITE_INDEX_ACCESS_CODE is not configured.");
+    }
 
     const showHome = () => {
       loginGate.hidden = true;
