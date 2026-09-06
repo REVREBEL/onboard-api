@@ -13,7 +13,7 @@
 
 <p align="right">Onboard a project by REVREBEL</p>
 
-# ONBOARD
+# ONBOARD API (Includes the frontend and backend API modules)
 
 <div align="left">
   <a href="https://github.com/REVREBEL/Onboard/issues">
