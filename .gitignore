@@ -41,3 +41,5 @@ api/uploads/
 
 # HAR files (may contain sensitive data)
 *.har
+
+AGENT.md
