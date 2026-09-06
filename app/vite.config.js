@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 
 const flattenHtmlOutput = {
   name: "flatten-html-output",
@@ -17,7 +17,19 @@ const flattenHtmlOutput = {
   }
 };
 
-export default defineConfig(({ isSsrBuild }) => {
+export default defineConfig(({ mode, isSsrBuild }) => {
+  const env = loadEnv(mode, process.cwd(), "VITE_");
+  const accessCode = env.VITE_INDEX_ACCESS_CODE;
+
+  if (!accessCode) {
+    console.error("\n[Onboard] BUILD CONFIG ERROR");
+    console.error("[Onboard] VITE_INDEX_ACCESS_CODE is not set.");
+    console.error("[Onboard] Add VITE_INDEX_ACCESS_CODE to the Webflow Cloud environment variables, then redeploy.\n");
+    throw new Error("Missing required environment variable: VITE_INDEX_ACCESS_CODE");
+  }
+
+  console.log("[Onboard] VITE_INDEX_ACCESS_CODE detected for this build.");
+
   if (isSsrBuild) {
     return {
       root: ".",
