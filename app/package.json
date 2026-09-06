@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "survey-analytics": "^1.11.9",
+    "survey-analytics": "^3.0.0",
     "survey-core": "^1.11.9",
     "survey-creator-core": "^1.11.9",
     "survey-creator-knockout": "^1.12.56",
