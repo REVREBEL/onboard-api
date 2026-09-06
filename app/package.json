@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "survey-analytics": "^1.11.9",
-    "survey-core": "^1.11.9",
-    "survey-creator-core": "^1.11.9",
+    "survey-core": "^3.0.0",
+    "survey-creator-core": "^3.0.0",
     "survey-creator-knockout": "^1.12.56",
     "survey-pdf": "^1.11.9"
   },
