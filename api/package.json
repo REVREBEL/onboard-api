@@ -7,7 +7,7 @@
     "dotenv": "^17.0.0",
     "express-rate-limit": "^7.5.0",
     "express": "^4.19.2",
-    "googleapis": "^178.0.0",
+    "googleapis": "^180.0.0",
     "helmet": "^8.0.0",
     "multer": "^1.4.5-lts.1",
     "morgan": "^1.10.0",
